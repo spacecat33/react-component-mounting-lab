@@ -6,7 +6,16 @@ class Timer extends Component {
     color: "#" + Math.floor(Math.random() * 16777215).toString(16)
   };
 
-  // add your code here
+  // add your code here - In the Timer component, there is already a method, clockTick, that handles updating the state. The state value, time, is then included in the render. We just need to set up an interval to call clockTick:
+  componentDidMount(){
+    this.interval = setInterval(this.clockTick, 1000)
+  }
+
+  // and Write a componentWillUnmount method in Timer that cleans up the interval you've created:
+  componentWillUnmount(){
+    clearInterval(this.interval);
+  }
+
 
   render() {
     const { time, color } = this.state;
